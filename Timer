@@ -1,51 +1,21 @@
-/**
- * Клас StudentInfo зберігає інформацію про студента
- */
-class StudentInfo {
+public class Timer extends Thread {
+    @Override
+    public void run() {
+        int seconds = 0;
+        while (true) {
+            System.out.println("Час" + seconds + "c");
+            seconds++;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e ) {
+                System.out.println("Помилка потоку: " + e.getMessage());
 
-    private String name;
-    private int age;
-    private String specialty;
+            }
 
-    /**
-     * Конструктор класу StudentInfo
-     * @param name ім’я студента
-     * @param age вік студента
-     * @param specialty спеціальність студента
-     */
-    public StudentInfo(String name, int age, String specialty) {
-        this.name = name;
-        this.age = age;
-        this.specialty = specialty;
+        }
     }
-
-    /**
-     * Метод для виведення інформації про студента
-     */
-    public void displayInfo() {
-        System.out.println("Ім’я: " + name);
-        System.out.println("Вік: " + age);
-        System.out.println("Спеціальність: " + specialty);
-    }
-}
-
-/**
- * Головний клас програми
- */
-public class Student {
-
-    /**
-     * Головний метод запуску програми
-     * @param args аргументи командного рядка
-     */
     public static void main(String[] args) {
-
-        StudentInfo student = new StudentInfo(
-                "Дарина",
-                17,
-                "Програмування"
-        );
-
-        student.displayInfo();
+        Timer timer = new Timer();
+        timer.start();
     }
 }
